@@ -1,10 +1,15 @@
 {
-  "uppdaterad": "2026-10-30T14:40:00+01:00",
+  "uppdaterad": "2026-10-30T15:30:00+01:00",
   "deals": [
     {
       "datum": "2026-10-30",
       "belopp": 230000,
       "kommentar": "2 st easyScreens till Östergötland"
+    },
+    {
+      "datum": "2026-10-30",
+      "belopp": 60000,
+      "kommentar": "2 st REM Callisto"
     }
   ]
 }
