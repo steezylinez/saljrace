@@ -1,5 +1,8 @@
 {
-  "uppdaterad": "2026-11-02T09:00:00+01:00",
+  "mal": 22470000,
+  "tidigare_forsaljning": 19310000,
+  "tidigare_forsaljning_text": "Försäljning hittills i år (före inlagda affärer)",
+  "uppdaterad": "2026-11-02T11:00:00+01:00",
   "deals": [
     {
       "datum": "2026-10-30",
@@ -20,6 +23,26 @@
       "datum": "2026-10-30",
       "belopp": 23000,
       "kommentar": "1 st MA28"
+    },
+    {
+      "datum": "2026-11-02",
+      "belopp": 825000,
+      "kommentar": "Eclipse"
+    },
+    {
+      "datum": "2026-11-02",
+      "belopp": 225000,
+      "kommentar": "RECD"
+    },
+    {
+      "datum": "2026-11-02",
+      "belopp": 230000,
+      "kommentar": "easyScreen"
+    },
+    {
+      "datum": "2026-11-02",
+      "belopp": 550000,
+      "kommentar": "Ljudburar"
     }
   ]
 }
