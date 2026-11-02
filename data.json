@@ -2,7 +2,7 @@
   "mal": 22470000,
   "tidigare_forsaljning": 19310000,
   "tidigare_forsaljning_text": "Försäljning hittills i år (före inlagda affärer)",
-  "uppdaterad": "2026-11-02T12:00:00+01:00",
+  "uppdaterad": "2026-11-02T13:00:00+01:00",
   "deals": [
     {
       "datum": "2026-10-30",
@@ -48,6 +48,14 @@
       "datum": "2026-11-02",
       "belopp": 20206,
       "kommentar": "eSRT"
+    },
+    {
+      "datum": "2026-11-02",
+      "belopp": 140000,
+      "kommentar": "Titan"
+    }
+  ]
+}
     }
   ]
 }
