@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Raketen mot målet</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one centered column; the rocket flight to the moon is the hero, figures below, then the deal log */
+:root{
+  --bg:#eef2f8; --panel:#ffffff; --ink:#18213a; --muted:#5b6682; --line:#d6ddea;
+  --track:#dfe5f0; --fill:#2f4fd8; --flame:#f08a24; --ok:#1f8a5b; --bad:#c2412d;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1324; --panel:#161e35; --ink:#e8ecf7; --muted:#9aa6c4; --line:#27314f;
+  --track:#232d4a; --fill:#6f8cff; --flame:#ffa24a; --ok:#4cc38a; --bad:#ff7a63; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1324; --panel:#161e35; --ink:#e8ecf7; --muted:#9aa6c4; --line:#27314f;
+  --track:#232d4a; --fill:#6f8cff; --flame:#ffa24a; --ok:#4cc38a; --bad:#ff7a63; color-scheme:dark}
+html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.sr{max-width:880px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+.sr-eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.sr h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,6vw,44px);line-height:1.05;margin:4px 0 6px;text-wrap:balance}
+.sr h2{font-family:var(--display);font-weight:700;font-size:18px;margin:0}
+.sr-lead{margin:0;color:var(--muted);max-width:60ch}
+.sr-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:14px;min-width:0}
+.sr-hero-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.sr-pct{font-family:var(--display);font-weight:800;font-size:clamp(44px,11vw,72px);line-height:1;font-variant-numeric:tabular-nums}
+.sr-of{color:var(--muted)}
+.sr-track{position:relative;height:64px}
+.sr-bana{position:absolute;left:0;right:0;top:26px;height:12px;border-radius:6px;background:var(--track);overflow:hidden}
+.sr-fyll{height:100%;background:linear-gradient(90deg,var(--fill),var(--flame));border-radius:6px;transition:width .8s ease}
+.sr-tick{position:absolute;top:20px;width:2px;height:24px;background:var(--line);transform:translateX(-1px)}
+.sr-tick.nadd{background:var(--flame)}
+.sr-raket{position:absolute;top:8px;font-size:34px;line-height:1;transform:translateX(-50%) rotate(45deg);transition:left .8s ease}
+.sr-flagga{position:absolute;right:-4px;top:12px;font-size:26px;line-height:1}
+.sr-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sr-steps li{border-top:3px solid var(--line);padding-top:8px;color:var(--muted);font-size:13px}
+.sr-steps li b{display:block;color:var(--ink);font-size:14px}
+.sr-steps li.nadd{border-color:var(--flame);color:var(--ink)}
+.sr-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.sr-stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:4px;align-content:start;min-width:0}
+.sr-label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sr-big{font-family:var(--mono);font-size:clamp(18px,3.4vw,24px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.sr-sub{font-size:12px;color:var(--muted)}
+.sr-list{list-style:none;margin:0;padding:0;display:grid}
+.sr-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.sr-list li:first-child{border-top:0}
+.sr-d{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.sr-k{min-width:0;overflow-wrap:anywhere}
+.sr-b{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sr-empty{color:var(--muted);margin:0}
+.sr-form{display:grid;grid-template-columns:150px 160px minmax(0,1fr) auto;gap:10px;align-items:end}
+.sr-form label{display:grid;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+.sr-form input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-width:0;width:100%;box-sizing:border-box}
+.sr-btn{font:inherit;font-weight:700;border:0;border-radius:8px;padding:10px 16px;background:var(--fill);color:#fff;cursor:pointer}
+.sr-btn:disabled{opacity:.6;cursor:default}
+.sr-del{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:6px;padding:4px 8px;cursor:pointer}
+.sr-del.armed{border-color:var(--bad);color:var(--bad)}
+.sr-msg{font-size:13px;color:var(--muted);margin:0;min-height:1em}
+.sr-msg.fel{color:var(--bad)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+@media (max-width:700px){
+  .sr-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sr-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sr-form{grid-template-columns:1fr 1fr}
+  .sr-form .sr-kom,.sr-form .sr-btn{grid-column:1 / -1}
+  .sr-list li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .sr-list .sr-d{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:reduce){.sr-fyll,.sr-raket{transition:none}}
+
+.sr-upd{font-size:12px;color:var(--muted);margin:0;text-align:center}
+
+.sr-scen{--vw:clamp(140px,32vw,240px);position:relative;height:calc(var(--vw) * .42 + 24px);margin-top:4px}
+.sr-bana2{position:absolute;left:0;right:0;top:50%;border-top:3px dashed var(--line)}
+.sr-tick2{position:absolute;top:calc(50% - 10px);width:3px;height:20px;border-radius:2px;background:var(--line);transform:translateX(-1px)}
+.sr-tick2.nadd{background:var(--flame)}
+.sr-mal{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:clamp(28px,6vw,40px);line-height:1}
+.sr-raket2{position:absolute;top:50%;width:var(--vw);height:calc(var(--vw) * .42);transform:translateY(-50%);left:0;transition:left 1.2s cubic-bezier(.3,.7,.3,1)}
+.sr-raket2 svg{display:block;width:100%;height:100%;overflow:visible}
+.sr-logo{position:absolute;left:25%;top:33%;width:39%;height:34%;object-fit:contain}
+.r-body{fill:#f7f9fd;stroke:var(--ink);stroke-width:3}
+.r-nose{fill:var(--fill);stroke:var(--ink);stroke-width:3}
+.r-fin{fill:var(--fill);stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.r-win{fill:#bcd3ff;stroke:var(--ink);stroke-width:3}
+.r-flame{fill:var(--flame)}.r-flame2{fill:#ffd166}
+@keyframes flamma{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.75)}}
+.r-eld{transform-box:fill-box;transform-origin:100% 50%;animation:flamma .35s ease-in-out infinite}
+.sr-scen.klar .r-eld{animation:none;opacity:0}
+.sr-pang{position:absolute;right:-6px;top:50%;transform:translateY(-50%) scale(.4);font-size:clamp(34px,8vw,52px);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+.sr-scen.klar .sr-pang{opacity:1;transform:translateY(-50%) scale(1)}
+.sr-progress{height:8px;border-radius:4px;background:var(--track);overflow:hidden}
+.sr-progress div{height:100%;background:linear-gradient(90deg,var(--fill),var(--flame));transition:width 1.2s ease}
+.sr-over{font-family:var(--mono);color:var(--ok);font-size:15px}
+@media (prefers-reduced-motion:reduce){.sr-raket2,.sr-progress div{transition:none}.r-eld{animation:none}}
+</style>
+</head>
+<body>
+<main class="sr" id="sr-root"></main>
+<script>
+(() => {
+  let MAL = 22470000;
+  const START = new Date(2026, 10, 1);
+  const SLUT = new Date(2026, 11, 31, 23, 59, 59);
+  const LEDIGT = new Set(['2026-12-24', '2026-12-25', '2026-12-31']);
+  const MILSTOLPAR = [
+    [0.25, '🛫 25 %', 'Lyftet – vi är i luften'],
+    [0.5, '☁️ 50 %', 'Halvvägs – genom molnen'],
+    [0.75, '🛰️ 75 %', 'Omloppsbana – sista spurten'],
+    [1, '🌕 100 %', 'Månlandning – budgeten är sprängd!']
+  ];
+  const ROCKET = '<svg viewBox="0 0 240 100" aria-hidden="true"><g class="r-eld"><polygon class="r-flame" points="42,34 0,50 42,66"/><polygon class="r-flame2" points="42,41 18,50 42,59"/></g><polygon class="r-fin" points="44,30 78,30 58,6 34,6"/><polygon class="r-fin" points="44,70 78,70 58,94 34,94"/><path class="r-body" d="M40,28 L176,28 L176,72 L40,72 Z"/><path class="r-nose" d="M176,28 Q222,30 238,50 Q222,70 176,72 Z"/><circle class="r-win" cx="188" cy="50" r="9"/><rect class="r-fin" x="34" y="34" width="10" height="32" rx="2"/></svg>';
+  const LOGO = 'data:image/png;base64,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';
+  let state = { deals: [], uppdaterad: null, bas: 0, basText: '' };
+  const root = document.getElementById('sr-root');
+  const nyckel = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const kr = (n) => new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 }).format(n) + ' kr';
+  const pct = (n) => new Intl.NumberFormat('sv-SE', { style: 'percent', maximumFractionDigits: 1 }).format(n);
+  const datumText = (s) => { const d = new Date(s + 'T12:00:00'); return isNaN(d) ? s : d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' }); };
+  const arbetsdagarKvar = () => {
+    const idag = new Date(); idag.setHours(0, 0, 0, 0);
+    const d = new Date(Math.max(idag, START));
+    let n = 0;
+    while (d <= SLUT) { const v = d.getDay(); if (v !== 0 && v !== 6 && !LEDIGT.has(nyckel(d))) n++; d.setDate(d.getDate() + 1); }
+    return n;
+  };
+  const h = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const els = {};
+  function build() {
+    const head = h('header');
+    head.append(h('p', 'sr-eyebrow', 'Säljrace november–december'), h('h1', null, 'Raketen mot målet'));
+    els.fas = h('p', 'sr-lead'); head.append(els.fas);
+    const hero = h('section', 'sr-card');
+    const top = h('div', 'sr-hero-top');
+    els.pct = h('span', 'sr-pct', '0 %'); els.of = h('span', 'sr-of'); els.over = h('span', 'sr-over'); top.append(els.pct, els.of, els.over);
+    els.scen = h('div', 'sr-scen');
+    els.scen.append(h('div', 'sr-bana2'));
+    els.ticks = MILSTOLPAR.slice(0, 3).map(([niva]) => { const t = h('span', 'sr-tick2'); els.scen.append(t); t.dataset.niva = niva; return t; });
+    els.mal = h('span', 'sr-mal', '🌕'); els.mal.setAttribute('aria-hidden', 'true');
+    els.raket = h('div', 'sr-raket2'); els.raket.innerHTML = ROCKET;
+    const logo = document.createElement('img'); logo.className = 'sr-logo'; logo.alt = ''; logo.src = LOGO;
+    els.raket.append(logo);
+    els.pang = h('span', 'sr-pang', '💥'); els.pang.setAttribute('aria-hidden', 'true');
+    els.scen.append(els.mal, els.raket, els.pang);
+    const prog = h('div', 'sr-progress'); els.fyll = h('div'); prog.append(els.fyll);
+    const steps = h('ul', 'sr-steps');
+    els.steps = MILSTOLPAR.map(([, rubrik, text]) => { const li = h('li'); li.append(h('b', null, rubrik), document.createTextNode(text)); steps.append(li); return li; });
+    hero.append(top, els.scen, prog, steps);
+    const stats = h('section', 'sr-stats');
+    const stat = (label) => { const s = h('div', 'sr-stat'); const big = h('span', 'sr-big', '—'); const sub = h('span', 'sr-sub'); s.append(h('span', 'sr-label', label), big, sub); stats.append(s); return { big, sub }; };
+    els.salt = stat('Sålt hittills'); els.kvar = stat('Kvar till målet'); els.perdag = stat('Behövs per arbetsdag'); els.dagar = stat('Dagar kvar');
+    const logg = h('section', 'sr-card');
+    logg.append(h('h2', null, 'Affärer som räknas'));
+    els.list = h('ul', 'sr-list'); els.empty = h('p', 'sr-empty', 'Inga affärer inlagda än. Första ordern lyfter raketen.');
+    logg.append(els.empty, els.list);
+    els.upd = h('p', 'sr-upd');
+    root.append(head, hero, stats, logg, els.upd);
+  }
+  function render() {
+    const salt = (Number(state.bas) || 0) + state.deals.reduce((s, r) => s + (Number(r.belopp) || 0), 0);
+    const kvar = Math.max(MAL - salt, 0), andel = salt / MAL, a = Math.min(Math.max(andel, 0), 1);
+    const nu = new Date(), dagar = arbetsdagarKvar();
+    els.fas.textContent = andel >= 1 ? 'Månlandning! Budgeten är sprängd, och allt härifrån är ren bonus.'
+      : nu > SLUT ? 'Racet är slut. Tack för en grym insats, allihop!'
+      : nu >= START ? `Racet pågår. Varje order tar raketen närmare målet på ${kr(MAL)}.`
+      : `Racet startar 1 november. Tillsammans ska vi sälja ${kr(MAL)} före nyår.`;
+    els.pct.textContent = pct(andel);
+    els.of.textContent = `av målet på ${kr(MAL)}`;
+    els.over.textContent = salt > MAL ? `+${kr(salt - MAL)} över budget` : '';
+    const sp = 'calc(100% - var(--vw) - 2.6rem)';
+    els.raket.style.left = `calc(${sp} * ${a})`;
+    els.ticks.forEach((t, i) => { t.style.left = `calc(${sp} * ${MILSTOLPAR[i][0]} + var(--vw))`; t.classList.toggle('nadd', andel >= MILSTOLPAR[i][0]); });
+    els.scen.classList.toggle('klar', andel >= 1);
+    els.mal.hidden = andel >= 1;
+    els.fyll.style.width = (a * 100) + '%';
+    els.steps.forEach((li, i) => li.classList.toggle('nadd', andel >= MILSTOLPAR[i][0]));
+    els.salt.big.textContent = kr(salt);
+    els.salt.sub.textContent = `${state.deals.length} ${state.deals.length === 1 ? 'affär' : 'affärer'}` + (state.bas ? ' + tidigare försäljning' : '');
+    els.kvar.big.textContent = kr(kvar);
+    els.kvar.sub.textContent = kvar <= 0 ? 'Målet är nått' : `${pct(1 - a)} återstår`;
+    els.perdag.big.textContent = kvar <= 0 ? '0 kr' : kr(dagar > 0 ? kvar / dagar : kvar);
+    els.perdag.sub.textContent = `${dagar} arbetsdagar kvar`;
+    els.dagar.big.textContent = String(Math.max(0, Math.ceil((SLUT - nu) / 86400000)));
+    els.dagar.sub.textContent = 'till 31 december';
+    const sorterade = state.deals.map((d, i) => ({ ...d, i })).sort((x, y) => String(y.datum).localeCompare(String(x.datum)) || y.i - x.i);
+    els.list.replaceChildren(); els.empty.hidden = sorterade.length > 0 || !!state.bas;
+    sorterade.forEach((d) => { const li = h('li'); li.append(h('span', 'sr-d', datumText(String(d.datum))), h('span', 'sr-k', d.kommentar || '—'), h('span', 'sr-b', kr(Number(d.belopp) || 0)), h('span')); els.list.append(li); });
+    if (state.bas) { const li = h('li'); li.append(h('span', 'sr-d', '—'), h('span', 'sr-k', state.basText || 'Tidigare försäljning'), h('span', 'sr-b', kr(Number(state.bas) || 0)), h('span')); els.list.append(li); }
+    els.upd.textContent = state.uppdaterad ? `Senast uppdaterad ${new Date(state.uppdaterad).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}` : '';
+  }
+  async function hamta() {
+    try {
+      const r = await fetch('data.json?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) throw new Error(r.status);
+      const d = await r.json();
+      state = { deals: Array.isArray(d.deals) ? d.deals : [], uppdaterad: d.uppdaterad || null, bas: Number(d.tidigare_forsaljning) || 0, basText: d.tidigare_forsaljning_text || '' };
+      if (Number(d.mal) > 0) MAL = Number(d.mal);
+    } catch (e) { /* behåll senaste läget */ }
+    render();
+  }
+  build(); render(); hamta();
+  setInterval(hamta, 5 * 60 * 1000);
+})();
+</script>
+</body>
+</html>
