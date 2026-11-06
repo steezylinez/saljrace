@@ -2,7 +2,7 @@
   "mal": 22470000,
   "tidigare_forsaljning": 19310000,
   "tidigare_forsaljning_text": "Försäljning hittills i år (före inlagda affärer)",
-  "uppdaterad": "2026-11-02T13:00:00+01:00",
+  "uppdaterad": "2026-11-06T10:00:00+01:00",
   "deals": [
     {
       "datum": "2026-10-30",
@@ -53,6 +53,16 @@
       "datum": "2026-11-02",
       "belopp": 140000,
       "kommentar": "Titan"
+    },
+    {
+      "datum": "2026-11-06",
+      "belopp": 230000,
+      "kommentar": "easyScreen"
+    },
+    {
+      "datum": "2026-11-06",
+      "belopp": 100000,
+      "kommentar": "Callisto"
     }
   ]
 }
